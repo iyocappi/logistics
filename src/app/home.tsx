@@ -16,9 +16,6 @@ import {
   CheckCircle,
   ArrowRight,
   Package,
-  Truck,
-  Plane,
-  Ship,
 } from "lucide-react";
 import Image from "next/image";
 

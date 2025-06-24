@@ -1,9 +1,9 @@
 import PackageTracking from "../components/tracking";
 
 export const metadata = {
-  title: "Track Your Shipment - SwiftLogistics",
+  title: "Track Your Shipment - NaviCore Logistics",
   description:
-    "Enter your tracking number to get real-time updates on your shipment status with SwiftLogistics.",
+    "Enter your tracking number to get real-time updates on your shipment status with NaviCore Logistics.",
 };
 
 export default function TrackingPage() {

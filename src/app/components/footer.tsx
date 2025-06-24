@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
-import Link from "next/link"
-import { Truck, Phone, Mail, MapPin } from "lucide-react"
+import Link from "next/link";
+import { Truck, Phone, Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="space-y-3">
             <div className="flex items-center space-x-2">
               <Truck className="h-6 w-6 text-blue-600" aria-hidden="true" />
-              <span className="font-bold text-xl">SwiftLogistics</span>
+              <span className="font-bold text-xl">NaviCore Logistics</span>
             </div>
             <p className="text-sm text-muted-foreground">
               Your trusted partner for global logistics solutions.
@@ -23,9 +23,17 @@ export default function Footer() {
           <div className="space-y-3">
             <h4 className="text-sm font-semibold">Services</h4>
             <ul className="space-y-1 text-sm text-muted-foreground">
-              {["Ground Transport", "Air Freight", "Ocean Freight", "Warehousing"].map((service) => (
-                <li key={service}>
-                  <Link href="#" className="hover:underline">
+              {[
+                "Ground Transport",
+                "Air Freight",
+                "Ocean Freight",
+                "Warehousing",
+              ].map((service, index) => (
+                <li key={index}>
+                  <Link
+                    href={`/${service.toLowerCase().replace(/\s+/g, "-")}`}
+                    className="hover:underline"
+                  >
                     {service}
                   </Link>
                 </li>
@@ -37,9 +45,12 @@ export default function Footer() {
           <div className="space-y-3">
             <h4 className="text-sm font-semibold">Company</h4>
             <ul className="space-y-1 text-sm text-muted-foreground">
-              {["About Us", "Careers", "News", "Contact"].map((item) => (
-                <li key={item}>
-                  <Link href="#" className="hover:underline">
+              {["About", "Careers", "News", "Contact"].map((item, index) => (
+                <li key={index}>
+                  <Link
+                    href={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
+                    className="hover:underline block"
+                  >
                     {item}
                   </Link>
                 </li>
@@ -57,7 +68,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" aria-hidden="true" />
-                <span>info@swiftlogistics.com</span>
+                <span>info@navicorelogistics.com</span>
               </li>
               <li className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4" aria-hidden="true" />
@@ -70,14 +81,19 @@ export default function Footer() {
         {/* Bottom section */}
         <div className="mt-6 border-t pt-6 flex flex-col sm:flex-row justify-between items-center">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} SwiftLogistics. All rights reserved.
+            © {new Date().getFullYear()} NaviCore Logistics. All rights
+            reserved.
           </p>
           <div className="flex space-x-4 text-xs text-muted-foreground mt-2 sm:mt-0">
-            <Link href="#" className="hover:underline">Privacy Policy</Link>
-            <Link href="#" className="hover:underline">Terms of Service</Link>
+            <Link href="#" className="hover:underline">
+              Privacy Policy
+            </Link>
+            <Link href="#" className="hover:underline">
+              Terms of Service
+            </Link>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }

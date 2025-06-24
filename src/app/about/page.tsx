@@ -1,9 +1,9 @@
 // app/about/page.tsx
 
 export const metadata = {
-  title: "About Us - SwiftLogistics",
+  title: "About Us - NaviCore Logistics",
   description:
-    "Discover the mission, vision, and values that drive SwiftLogistics to deliver world-class shipping and logistics solutions across the globe.",
+    "Discover the mission, vision, and values that drive NaviCore Logistics to deliver world-class shipping and logistics solutions across the globe.",
 };
 
 export default function AboutPage() {
@@ -13,12 +13,12 @@ export default function AboutPage() {
       <section className="relative w-full h-64 md:h-96">
         <img
           src="/images/about.jpeg" // ← replace with your actual path
-          alt="SwiftLogistics banner"
+          alt="NaviCore Logistics banner"
           className="absolute inset-0 w-full h-full object-contain"
         />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <h1 className="text-white text-3xl md:text-5xl font-bold text-center">
-            About SwiftLogistics
+            About NaviCore Logistics
           </h1>
         </div>
       </section>
@@ -29,7 +29,7 @@ export default function AboutPage() {
           {/* Intro Section */}
           <section className="text-center">
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              We’re committed to delivering reliable, efficient, and secure
+              We&apos;re committed to delivering reliable, efficient, and secure
               logistics solutions tailored to your business needs — globally and
               locally.
             </p>
