@@ -94,6 +94,20 @@
         },
         "optional": true
       },
+      "service": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "weight": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "events": {
         "type": "objectAttribute",
         "value": {

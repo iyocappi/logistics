@@ -25,6 +25,8 @@ export type Tracking = {
   recipient?: string;
   status?: "in-transit" | "delivered" | "pending" | "exception";
   estimatedDelivery?: string;
+  service?: string;
+  weight?: string;
   events?: Array<{
     status?: string;
     description?: string;
