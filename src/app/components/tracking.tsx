@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import { client } from "@/sanity/lib/client";
 import { TRACKING_QUERY } from "@/sanity/lib/trackingQuery";
+import Image from "next/image";
 
 interface TrackingEvent {
   status: string;
@@ -44,6 +45,8 @@ interface TrackingData {
   origin: string;
   destination: string;
   recipient: string;
+  service: string;
+  weight: string;
   events: TrackingEvent[];
 }
 
@@ -112,21 +115,47 @@ export default function PackageTracking() {
         trackingNumber: trackingNumber.trim(),
       });
       if (data) {
+        interface FetchedTrackingEvent {
+          status?: string;
+          description?: string;
+          location?: string;
+          timestamp?: string;
+          isCompleted?: boolean;
+        }
+
+        interface FetchedTrackingData {
+          trackingNumber?: string;
+          status?: string;
+          estimatedDelivery?: string;
+          origin?: string;
+          destination?: string;
+          recipient?: string;
+          service?: string;
+          weight?: string;
+          events?: FetchedTrackingEvent[];
+        }
+
+        const fetchedData: FetchedTrackingData = data;
+
         setTrackingData({
-          trackingNumber: data.trackingNumber || "",
-          status: data.status || "pending",
-          estimatedDelivery: data.estimatedDelivery || "",
-          origin: data.origin || "",
-          destination: data.destination || "",
-          recipient: data.recipient || "",
-          events: Array.isArray(data.events)
-            ? data.events.map((event: any) => ({
-                status: event.status || "",
-                description: event.description || "",
-                location: event.location || "",
-                timestamp: event.timestamp || "",
-                isCompleted: !!event.isCompleted,
-              }))
+          trackingNumber: fetchedData.trackingNumber || "",
+          status: (fetchedData.status as TrackingData["status"]) || "pending",
+          estimatedDelivery: fetchedData.estimatedDelivery || "",
+          origin: fetchedData.origin || "",
+          destination: fetchedData.destination || "",
+          recipient: fetchedData.recipient || "",
+          service: fetchedData.service || "",
+          weight: fetchedData.weight || "",
+          events: Array.isArray(fetchedData.events)
+            ? fetchedData.events.map(
+                (event: FetchedTrackingEvent): TrackingEvent => ({
+                  status: event.status || "",
+                  description: event.description || "",
+                  location: event.location || "",
+                  timestamp: event.timestamp || "",
+                  isCompleted: !!event.isCompleted,
+                })
+              )
             : [],
         });
         setError("");
@@ -152,10 +181,12 @@ export default function PackageTracking() {
     <main className="w-full">
       {/* Hero Banner */}
       <section className="relative w-full h-64 md:h-96">
-        <img
-          src="/images/track.jpg" // You can change this to any banner image you prefer
+        <Image
+          src="/images/track.jpg"
           alt="Tracking banner"
-          className="absolute inset-0 w-full h-full object-contain"
+          fill
+          className="object-contain"
+          priority
         />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <h1 className="text-white text-3xl md:text-5xl font-bold text-center">

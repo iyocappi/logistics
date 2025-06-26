@@ -45,6 +45,16 @@ export default defineType({
       type: "string",
     }),
     defineField({
+      name: "service",
+      title: "Service",
+      type: "string",
+    }),
+    defineField({
+      name: "weight",
+      title: "Weight",
+      type: "string",
+    }),
+    defineField({
       name: "events",
       title: "Tracking Events",
       type: "array",
