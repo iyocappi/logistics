@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Truck, Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
+import LogisticsLogo from "./logo";
 
 export default function Footer() {
   return (
@@ -10,9 +11,12 @@ export default function Footer() {
         <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
           {/* Brand */}
           <div className="space-y-3">
-            <div className="flex items-center space-x-2">
-              <Truck className="h-6 w-6 text-blue-600" aria-hidden="true" />
-              <span className="font-bold text-xl">NaviCore Logistics</span>
+            <div className="flex items-center">
+              <LogisticsLogo
+                width={120}
+                height={24}
+                className="h-6 w-auto max-w-[120px]"
+              />
             </div>
             <p className="text-sm text-muted-foreground">
               Your trusted partner for global logistics solutions.
@@ -30,10 +34,7 @@ export default function Footer() {
                 "Warehousing",
               ].map((service, index) => (
                 <li key={index}>
-                  <Link
-                    href={`/${service.toLowerCase().replace(/\s+/g, "-")}`}
-                    className="hover:underline"
-                  >
+                  <Link href={"/services/"} className="hover:underline">
                     {service}
                   </Link>
                 </li>
@@ -68,7 +69,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" aria-hidden="true" />
-                <span>info@navicorelogistics.com</span>
+                <span>navicorelogistics@gmail.com</span>
               </li>
               <li className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4" aria-hidden="true" />

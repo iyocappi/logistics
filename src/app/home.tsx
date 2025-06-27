@@ -18,6 +18,7 @@ import {
   Package,
 } from "lucide-react";
 import Image from "next/image";
+import StatsSection from "./components/stats-section";
 
 export default function Component() {
   return (
@@ -27,7 +28,7 @@ export default function Component() {
         <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48">
           <div className="absolute inset-0 z-0">
             <Image
-              src="/banner1.jpg?height=800&width=1200"
+              src="/images/banner1.jpg?height=800&width=1200"
               alt="Logistics warehouse with trucks and cargo"
               fill
               className="object-cover brightness-50"
@@ -55,16 +56,18 @@ export default function Component() {
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-                  Get Started
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
                 <Button
-                  variant="outline"
+                  asChild
                   size="lg"
-                  className="border-white text-white hover:bg-white hover:text-black"
+                  className="bg-blue-600 text-white border-blue-600 hover:bg-white hover:text-blue-700 transition-colors duration-200 shadow-md w-full min-[400px]:w-auto"
                 >
-                  Track Package
+                  <a
+                    href="/tracking"
+                    className="flex items-center justify-center"
+                  >
+                    Track Package
+                    <ArrowRight className="ml-2 h-4 w-4 inline" />
+                  </a>
                 </Button>
               </div>
             </div>
@@ -249,35 +252,8 @@ export default function Component() {
         </section>
 
         {/* Stats Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-4 md:grid-cols-2">
-              <div className="flex flex-col items-center space-y-2 text-center">
-                <div className="text-3xl font-bold text-blue-600">50+</div>
-                <div className="text-sm text-muted-foreground">
-                  Countries Served
-                </div>
-              </div>
-              <div className="flex flex-col items-center space-y-2 text-center">
-                <div className="text-3xl font-bold text-blue-600">1M+</div>
-                <div className="text-sm text-muted-foreground">
-                  Packages Delivered
-                </div>
-              </div>
-              <div className="flex flex-col items-center space-y-2 text-center">
-                <div className="text-3xl font-bold text-blue-600">99.9%</div>
-                <div className="text-sm text-muted-foreground">
-                  On-Time Delivery
-                </div>
-              </div>
-              <div className="flex flex-col items-center space-y-2 text-center">
-                <div className="text-3xl font-bold text-blue-600">24/7</div>
-                <div className="text-sm text-muted-foreground">
-                  Customer Support
-                </div>
-              </div>
-            </div>
-          </div>
+        <section>
+          <StatsSection />
         </section>
       </main>
     </div>

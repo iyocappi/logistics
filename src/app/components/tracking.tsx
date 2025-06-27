@@ -227,7 +227,7 @@ export default function PackageTracking() {
                 <form onSubmit={handleTrack} className="flex gap-2">
                   <Input
                     type="text"
-                    placeholder="Enter tracking number (try SW123456789 or SW987654321)"
+                    placeholder="Enter tracking number ( e.g SW123456789 )"
                     value={trackingNumber}
                     onChange={(e) => setTrackingNumber(e.target.value)}
                     className="flex-1"

@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import LogisticsLogo from "./logo";
 
 export default function Header() {
   const pathname = usePathname();
@@ -19,21 +19,14 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex items-center justify-between px-4 py-4 md:px-6">
+      <div className="container flex items-center justify-between px-3 py-3 sm:px-4 sm:py-4 md:px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
-          <Image
-            src="/images/logo.png"
-            alt="NaviCore Logistics Logo"
-            height={40}
-            width={140}
-            className="h-8 w-auto md:h-10 max-w-[140px] object-contain"
-            style={{ minWidth: 32 }}
-            priority
+          <LogisticsLogo
+            width={180}
+            height={36}
+            className="h-8 w-auto sm:h-9 md:h-10 lg:h-11 max-w-[120px] sm:max-w-[140px] md:max-w-[160px] lg:max-w-[180px] transition-all duration-200"
           />
-          {/* <span className="font-bold text-xl hidden sm:inline-block">
-            Logistics
-          </span> */}
         </Link>
 
         {/* Desktop Nav */}
@@ -52,12 +45,12 @@ export default function Header() {
         </nav>
 
         {/* Desktop Actions */}
-        {/* <div className="hidden md:flex items-center space-x-2">
+        <div className="hidden md:flex items-center space-x-2">
           <Button variant="ghost" size="sm">
             Sign In
           </Button>
           <Button size="sm">Get Quote</Button>
-        </div> */}
+        </div>
 
         {/* Mobile Menu */}
         <div className="md:hidden">
@@ -74,16 +67,11 @@ export default function Header() {
             <SheetContent side="right" className="pr-0">
               {/* Mobile Logo */}
               <div className="px-4 py-4 border-b flex items-center space-x-2">
-                <Image
-                  src="/images/logo.png"
-                  alt="NaviCore Logistics Logo"
+                <LogisticsLogo
+                  width={160}
                   height={32}
-                  width={120}
-                  className="h-8 w-auto max-w-[120px] object-contain"
-                  style={{ minWidth: 32 }}
-                  priority
+                  className="h-7 w-auto max-w-[160px]"
                 />
-                {/* <span className="font-bold text-xl">NaviCore Logistics</span> */}
               </div>
 
               {/* Mobile Nav */}
@@ -103,14 +91,14 @@ export default function Header() {
                     </Link>
                   ))}
                 </nav>
-                {/* <div className="pt-4 border-t flex flex-col space-y-2">
+                <div className="pt-4 border-t flex flex-col space-y-2">
                   <Button variant="ghost" size="sm" className="w-full">
                     Sign In
                   </Button>
                   <Button size="sm" className="w-full">
                     Get Quote
                   </Button>
-                </div> */}
+                </div>
               </div>
             </SheetContent>
           </Sheet>
