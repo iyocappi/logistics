@@ -23,9 +23,9 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
           <LogisticsLogo
-            width={180}
-            height={36}
-            className="h-8 w-auto sm:h-9 md:h-10 lg:h-11 max-w-[120px] sm:max-w-[140px] md:max-w-[160px] lg:max-w-[180px] transition-all duration-200"
+            width={160}
+            height={40}
+            className="h-10 w-auto max-w-[140px] sm:h-11 sm:max-w-[160px] md:h-12 md:max-w-[180px] lg:h-14 lg:max-w-[220px] transition-all duration-200"
           />
         </Link>
 
@@ -46,9 +46,9 @@ export default function Header() {
 
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center space-x-2">
-          <Button variant="ghost" size="sm">
+          {/* <Button variant="ghost" size="sm">
             Sign In
-          </Button>
+          </Button> */}
           <Button size="sm">Get Quote</Button>
         </div>
 
@@ -68,9 +68,9 @@ export default function Header() {
               {/* Mobile Logo */}
               <div className="px-4 py-4 border-b flex items-center space-x-2">
                 <LogisticsLogo
-                  width={160}
+                  width={120}
                   height={32}
-                  className="h-7 w-auto max-w-[160px]"
+                  className="h-9 w-auto max-w-[120px] sm:h-10 sm:max-w-[140px] transition-all duration-200"
                 />
               </div>
 
@@ -92,9 +92,9 @@ export default function Header() {
                   ))}
                 </nav>
                 <div className="pt-4 border-t flex flex-col space-y-2">
-                  <Button variant="ghost" size="sm" className="w-full">
+                  {/* <Button variant="ghost" size="sm" className="w-full">
                     Sign In
-                  </Button>
+                  </Button> */}
                   <Button size="sm" className="w-full">
                     Get Quote
                   </Button>

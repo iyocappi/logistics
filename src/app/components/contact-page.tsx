@@ -17,8 +17,42 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
+import { useRef, useState, FormEvent } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
+  const form = useRef<HTMLFormElement | null>(null);
+  const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    if (!form.current) return;
+    emailjs
+      .sendForm(
+        "service_jgt9quh",
+        "template_d8mg5fa",
+        form.current,
+        "yJ0DMEMZSHXogdfr9"
+      )
+      .then(
+        () => {
+          setSent(true);
+          setLoading(false);
+          if (form.current) {
+            form.current.reset();
+          }
+        },
+        () => {
+          setError("Failed to send. Please try again.");
+          setLoading(false);
+        }
+      );
+  };
+
   return (
     <main className="flex flex-col">
       {/* Hero Section */}
@@ -186,7 +220,7 @@ export default function Contact() {
               </p>
             </CardHeader>
             <CardContent>
-              <form className="space-y-6">
+              <form ref={form} onSubmit={sendEmail} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label
@@ -196,6 +230,7 @@ export default function Contact() {
                       First Name
                     </Label>
                     <Input
+                      name="firstName"
                       id="firstName"
                       type="text"
                       placeholder="John"
@@ -211,6 +246,7 @@ export default function Contact() {
                       Last Name
                     </Label>
                     <Input
+                      name="lastName"
                       id="lastName"
                       type="text"
                       placeholder="Doe"
@@ -224,6 +260,7 @@ export default function Contact() {
                     Email Address
                   </Label>
                   <Input
+                    name="email"
                     id="email"
                     type="email"
                     placeholder="john.doe@gmail.com"
@@ -236,6 +273,7 @@ export default function Contact() {
                     Phone Number
                   </Label>
                   <Input
+                    name="phone"
                     id="phone"
                     type="tel"
                     placeholder="+1 (555) 123-4567"
@@ -250,6 +288,7 @@ export default function Contact() {
                     Subject
                   </Label>
                   <Input
+                    name="subject"
                     id="subject"
                     type="text"
                     placeholder="How can we help you?"
@@ -265,6 +304,7 @@ export default function Contact() {
                     Message
                   </Label>
                   <Textarea
+                    name="message"
                     id="message"
                     placeholder="Tell us more about your logistics needs..."
                     rows={5}
@@ -275,10 +315,17 @@ export default function Contact() {
                 <Button
                   type="submit"
                   className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium py-3 rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
+                  disabled={loading}
                 >
                   <Send className="w-4 h-4" />
-                  Send Message
+                  {loading ? "Sending..." : "Send Message"}
                 </Button>
+                {sent && (
+                  <p className="text-green-600 text-center">
+                    Message sent! We will get back to you soon.
+                  </p>
+                )}
+                {error && <p className="text-red-600 text-center">{error}</p>}
               </form>
             </CardContent>
           </Card>
