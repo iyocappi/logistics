@@ -144,7 +144,7 @@ export default function Contact() {
                   <div>
                     <div className="font-medium text-slate-800">Email</div>
                     <div className="text-slate-600">
-                      navicorelogistics@gmail.com
+                      navicorelogistics@hotmail.com
                     </div>
                   </div>
                 </div>
