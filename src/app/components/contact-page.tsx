@@ -33,7 +33,7 @@ export default function Contact() {
     if (!form.current) return;
     emailjs
       .sendForm(
-        "service_jgt9quh",
+        "service_7myemb4",
         "template_d8mg5fa",
         form.current,
         "yJ0DMEMZSHXogdfr9"
